@@ -58,67 +58,79 @@ void loop() {
     }
   }
   stopm();
-  if (distanceR>distanceL) {
-    analogWrite(pwm1,40);
-    analogWrite(pwmr,40);
+  if (distanceR > distanceL) {
+    analogWrite(pwml, 40);
+    analogWrite(pwmr, 40);
     turnR();
     gostraight();
     return;
   }
-  if(distanceL>distanceR){
-    analogWrite(pwm1,40);
-    analogWrite(pwmr,40);
+  if (distanceL > distanceR) {
+    analogWrite(pwml, 40);
+    analogWrite(pwmr, 40);
     turnleft();
-    gostaight();
+    gostraight();
     return;
   }
-  if(distanceL<5&&distanceR<5){
-    analogWrite(pwm1,40);
-    analogWrite(pwmr,40);
+  if (distanceL < 5 && distanceR < 5) {
+    analogWrite(pwml, 40);
+    analogWrite(pwmr, 40);
     reverse();
     stopm();
     return;
   }
-  }
-  void turnR() {                              // stop for 1 sec
+}
+void turnR() {                              // stop for 1 sec
+  digitalWrite(in1, HIGH);                  //
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, HIGH);
+  delay(1000);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  delay(500);
+}
+void gostraight() {
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+}
+void stopm() {
+  digitalWrite(in1, HIGH);                  //
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, HIGH);
+}
+void uturn() {
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, HIGH);
+  delay(1000);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+  delay(1000);
+}
+void reverse() {
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
+}
+void turnleft(){
     digitalWrite(in1, HIGH);                  //
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, HIGH);
-    delay(1000);
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
-    delay(500);
-  }
-  void gostraight(){
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, LOW);
-    digitalWrite(in4, HIGH);
-  }
-  void stopm() {
-    digitalWrite(in1, HIGH);                  //
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, HIGH);
-  }
-  void uturn() {
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, HIGH);
-    delay(1000);
-    digitalWrite(in1, HIGH);
-    digitalWrite(in2, LOW);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
-    delay(1000);
-  }
-  void reverse() {
-    digitalWrite(in1, LOW);
-    digitalWrite(in2, HIGH);
-    digitalWrite(in3, HIGH);
-    digitalWrite(in4, LOW);
-  }
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, HIGH);
+  delay(1000);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
+  delay(500);
+}
