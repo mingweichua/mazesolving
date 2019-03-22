@@ -43,7 +43,7 @@ void setup() {
   distanceR = sonar2.ping_cm();
 }
 void loop() {
-
+Se
   while (distance > 200) {
     gostraight();
     if (distanceL < 3) {
